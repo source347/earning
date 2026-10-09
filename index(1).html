@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0d12">
+<title>Orbit — Rewards Command Center</title>
+<style>
+:root{--bg:#0b0d12;--panel:#11151d;--panel2:#151b25;--line:#242c39;--text:#eef2f8;--muted:#8e9aaa;--mint:#a6ffcb;--violet:#b9a6ff;--cyan:#83e8ff;--amber:#ffd68a;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% -20%,#1b2540 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:238px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;padding:27px 17px;border-right:1px solid var(--line);background:#0b0e14d9;backdrop-filter:blur(18px);display:flex;flex-direction:column;gap:28px}.brand{display:flex;align-items:center;gap:11px;padding:0 9px;font-weight:800;letter-spacing:-.04em;font-size:20px}.brandmark{display:grid;place-items:center;width:35px;height:35px;border-radius:12px;background:linear-gradient(135deg,var(--mint),var(--cyan));color:#0b1115;font-size:18px;box-shadow:0 0 24px #83e8ff20}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:#687586;font-weight:800;padding:0 11px}.nav{display:grid;gap:5px}.nav a{padding:11px 12px;border-radius:11px;color:var(--muted);display:flex;align-items:center;gap:12px;font-size:13px;transition:.2s}.nav a:hover,.nav a.active{background:#1a222d;color:var(--text)}.nav a.active{box-shadow:inset 2px 0 var(--mint)}.nav .ico{width:20px;text-align:center;font-size:16px}.side-note{margin-top:auto;border:1px solid var(--line);background:linear-gradient(150deg,#151c26,#10131a);padding:15px;border-radius:15px}.side-note strong{display:block;font-size:12px;margin-bottom:6px}.side-note p{margin:0;color:var(--muted);font-size:11px}.side-note .dot{display:inline-block;width:7px;height:7px;background:var(--mint);border-radius:50%;margin-right:6px}.main{min-width:0;padding:28px clamp(18px,3vw,44px) 60px;max-width:1600px;width:100%;margin:0 auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:34px}.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--text);font-weight:600}.top-actions{display:flex;align-items:center;gap:10px}.search{position:relative}.search input{width:min(250px,34vw);background:#111720;border:1px solid var(--line);border-radius:11px;padding:10px 12px 10px 35px;color:var(--text);outline:none}.search input:focus{border-color:#536c77}.search span{position:absolute;left:12px;top:8px;color:var(--muted)}.pill{font-size:11px;color:var(--mint);border:1px solid #315b4a;background:#14251e;padding:7px 10px;border-radius:9px;white-space:nowrap}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:25px}.hero h1{font-size:clamp(29px,4vw,43px);letter-spacing:-.055em;line-height:1.08;margin:9px 0 12px}.hero p{margin:0;color:var(--muted);max-width:600px;font-size:14px}.kicker{color:var(--mint);text-transform:uppercase;letter-spacing:.15em;font-size:10px;font-weight:800}.hero-actions{display:flex;gap:9px;flex-shrink:0}.btn{border:1px solid var(--line);background:#151b25;color:var(--text);padding:10px 14px;border-radius:10px;font-size:12px;font-weight:700;transition:.2s}.btn:hover{transform:translateY(-1px);border-color:#536272}.btn.primary{background:var(--mint);color:#09130f;border-color:var(--mint)}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:28px}.stat{padding:18px 18px 17px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#141a24,#10141b);min-width:0}.stat-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px;gap:8px}.stat-icon{width:30px;height:30px;border-radius:10px;background:#202a35;display:grid;place-items:center;font-size:15px}.stat-value{font-size:29px;letter-spacing:-.05em;font-weight:750;margin:12px 0 4px}.stat-foot{font-size:10px;color:#728091}.stat-foot em{font-style:normal;color:var(--mint)}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:31px 0 14px}.section-head h2{font-size:17px;letter-spacing:-.025em;margin:0}.section-head p{margin:3px 0 0;font-size:11px;color:var(--muted)}.filters{display:flex;gap:6px;flex-wrap:wrap}.filter{border:1px solid var(--line);color:var(--muted);background:transparent;padding:7px 10px;border-radius:9px;font-size:10px}.filter.selected{background:#202b36;border-color:#445260;color:var(--text)}.platform-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.platform{position:relative;overflow:hidden;background:linear-gradient(150deg,#151b25,#10141b 75%);border:1px solid var(--line);border-radius:17px;padding:17px;min-width:0;transition:transform .2s,border-color .2s}.platform:hover{transform:translateY(-3px);border-color:#455362}.platform:before{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-45px;top:-50px;background:var(--glow,#a6ffcb);opacity:.09;filter:blur(5px)}.platform-top{display:flex;align-items:center;gap:11px;margin-bottom:14px}.platform-logo{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:var(--logo-bg,#1c2a2a);font-size:21px;flex-shrink:0;border:1px solid #ffffff0c}.platform-name{font-weight:750;font-size:14px;letter-spacing:-.02em}.platform-type{font-size:10px;color:var(--muted);margin-top:2px}.status{margin-left:auto;align-self:flex-start;border-radius:6px;padding:4px 7px;font-size:9px;letter-spacing:.02em;background:#1c2631;color:#9eacbb;white-space:nowrap}.status.web3{color:var(--violet);background:#29233d}.platform-desc{color:#9ba7b6;font-size:11px;min-height:34px;margin:0 0 14px}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px}.tag{font-size:9px;color:#9caabb;border:1px solid #2a3340;border-radius:6px;padding:4px 6px}.platform-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #252c37;padding-top:13px}.platform-foot small{font-size:10px;color:#788596}.open-link{font-size:11px;font-weight:750;color:var(--mint);display:inline-flex;align-items:center;gap:6px}.open-link:hover{color:white}.open-link span{transition:transform .2s}.open-link:hover span{transform:translate(2px,-2px)}.lower-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr);gap:14px;margin-top:28px}.panel{background:linear-gradient(150deg,#141a23,#10141a);border:1px solid var(--line);border-radius:17px;padding:19px;min-width:0}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.panel-title h3{font-size:14px;margin:0}.panel-title span{font-size:10px;color:var(--muted)}.task{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #222a34}.task:last-child{border:0;padding-bottom:0}.task input{accent-color:var(--mint);width:15px;height:15px;flex-shrink:0}.task label{flex:1;min-width:0;font-size:12px}.task small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.task.done label{text-decoration:line-through;color:#657180}.task-type{font-size:9px;color:var(--cyan);white-space:nowrap}.progress-row{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:18px 0 8px}.progress-row strong{color:var(--text)}.progress{height:6px;background:#252d38;border-radius:99px;overflow:hidden}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--cyan));border-radius:99px;transition:width .3s}.note{font-size:11px;color:var(--muted);margin:14px 0 0}.quick-links{display:grid;gap:9px}.quick-link{display:flex;align-items:center;gap:10px;padding:11px;background:#171e28;border:1px solid #252e3a;border-radius:11px}.quick-link .qicon{width:31px;height:31px;border-radius:9px;background:#26313b;display:grid;place-items:center}.quick-link div:nth-child(2){flex:1;font-size:11px;font-weight:700}.quick-link small{display:block;font-size:9px;color:var(--muted);font-weight:400}.quick-link b{color:var(--muted);font-size:13px}.footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;color:#6e7b8b;font-size:10px}.footer a{color:#a3b0bd}.empty{display:none;color:var(--muted);padding:24px;text-align:center;border:1px dashed var(--line);border-radius:14px;font-size:12px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#e6fff0;color:#102018;border-radius:10px;padding:10px 15px;font-size:12px;font-weight:700;transition:.25s;box-shadow:0 8px 30px #0008}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1100px){.platform-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{grid-template-columns:205px minmax(0,1fr)}}
+@media(max-width:760px){.shell{display:block}.sidebar{position:relative;height:auto;padding:14px 16px;border-right:0;border-bottom:1px solid var(--line);gap:14px}.brand{padding:0 2px}.nav{display:flex;overflow-x:auto;gap:4px;padding-bottom:2px}.nav a{white-space:nowrap;padding:9px 10px}.nav a.active{box-shadow:inset 0 -2px var(--mint)}.eyebrow,.side-note{display:none}.main{padding:22px 16px 40px}.topbar{margin-bottom:26px}.hero{align-items:flex-start;flex-direction:column}.hero-actions{width:100%}.hero-actions .btn{flex:1}.lower-grid{grid-template-columns:1fr}.search input{width:min(210px,48vw)}.pill{display:none}}
+@media(max-width:480px){.platform-grid{grid-template-columns:1fr}.stats{gap:9px}.stat{padding:14px}.stat-value{font-size:25px}.stat-head{font-size:10px}.hero h1{font-size:31px}.section-head{align-items:flex-start;flex-direction:column}.filters{width:100%}.topbar{gap:8px}.crumb{font-size:10px}.platform-desc{min-height:0}.footer{flex-direction:column}.search input{width:43vw}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+  <a class="brand" href="#overview" aria-label="Orbit home"><span class="brandmark">◈</span> orbit<span style="color:var(--mint)">.</span></a>
+  <div class="eyebrow">Workspace</div>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="active" href="#overview"><span class="ico">◫</span> Overview</a>
+    <a href="#platforms"><span class="ico">◉</span> Platforms</a>
+    <a href="#missions"><span class="ico">☑</span> Missions</a>
+    <a href="#shortcuts"><span class="ico">↗</span> Quick access</a>
+  </nav>
+  <div class="side-note"><strong><span class="dot"></span>Personal tracker</strong><p>Keep your reward ecosystem organized. Progress is saved in this browser on this device.</p></div>
+</aside>
+<main class="main" id="overview">
+  <header class="topbar">
+    <div class="crumb">Workspace <span style="color:#4c5868"> / </span> <b>Overview</b></div>
+    <div class="top-actions"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search platforms…" aria-label="Search platforms"></label><span class="pill">● LOCAL TRACKER</span></div>
+  </header>
+  <section class="hero">
+    <div><div class="kicker">Your digital side quests</div><h1>One orbit.<br>Many ways to earn.</h1><p>Your personal command center for rewards, Web3 communities, loyalty programs, and earning platforms. Track your activity without losing the big picture.</p></div>
+    <div class="hero-actions"><button class="btn" id="resetTasks">Reset missions</button><a class="btn primary" href="#platforms">Explore platforms ↗</a></div>
+  </section>
+  <section class="stats" aria-label="Tracker statistics">
+    <article class="stat"><div class="stat-head">Platforms in orbit <span class="stat-icon">◈</span></div><div class="stat-value" id="platformCount">09</div><div class="stat-foot">Across rewards, Web3 & publishing</div></article>
+    <article class="stat"><div class="stat-head">Missions completed <span class="stat-icon">✓</span></div><div class="stat-value" id="completedCount">0 <span style="font-size:14px;color:var(--muted);font-weight:500">/ 5</span></div><div class="stat-foot"><em id="completionPct">0%</em> of your checklist</div></article>
+    <article class="stat"><div class="stat-head">Earning categories <span class="stat-icon">⌘</span></div><div class="stat-value">04</div><div class="stat-foot">Rewards · Nodes · Content · DeFi</div></article>
+    <article class="stat"><div class="stat-head">Today’s focus <span class="stat-icon">✳</span></div><div class="stat-value" style="font-size:22px;margin-top:17px">Stay consistent</div><div class="stat-foot">Small steps, tracked over time</div></article>
+  </section>
+  <section id="platforms">
+    <div class="section-head"><div><h2>Your platform stack</h2><p>Open a platform using your supplied referral link.</p></div>
+      <div class="filters" role="group" aria-label="Filter platforms">
+        <button class="filter selected" data-filter="all">All 09</button><button class="filter" data-filter="rewards">Rewards</button><button class="filter" data-filter="web3">Web3</button><button class="filter" data-filter="content">Content</button>
+      </div>
+    </div>
+    <div class="platform-grid" id="platformGrid">
+      <article class="platform" data-category="rewards" data-name="Pawns.app surveys sharing rewards">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#19342b">🐾</div><div><div class="platform-name">Pawns.app</div><div class="platform-type">Surveys & passive rewards</div></div><span class="status">REWARDS</span></div>
+        <p class="platform-desc">Surveys, offer walls, game tasks, and sharing-based earning opportunities.</p><div class="tags"><span class="tag">Surveys</span><span class="tag">Offers</span><span class="tag">Referrals</span></div>
+        <div class="platform-foot"><small>Everyday earning</small><a class="open-link" href="https://pawns.app?r=1112465" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+      <article class="platform" data-category="web3" data-name="OptimAI node artificial intelligence compute network">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#29213e">⌘</div><div><div class="platform-name">OptimAI Node</div><div class="platform-type">AI network participation</div></div><span class="status web3">WEB3 / AI</span></div>
+        <p class="platform-desc">Contribute network resources and participate in an agent-focused decentralized AI ecosystem.</p><div class="tags"><span class="tag">Nodes</span><span class="tag">AI</span><span class="tag">Network</span></div>
+        <div class="platform-foot"><small>Infrastructure</small><a class="open-link" href="https://node.optimai.network/register?ref=0EB0B06E" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+      <article class="platform" data-category="web3" data-name="RollerCoin crypto mining simulator games">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#3b2b1d">🎮</div><div><div class="platform-name">RollerCoin</div><div class="platform-type">Crypto mining simulator</div></div><span class="status web3">GAMEFI</span></div>
+        <p class="platform-desc">Play mini-games, build virtual mining power, and compete in a playful crypto-themed world.</p><div class="tags"><span class="tag">Mini-games</span><span class="tag">Mining sim</span><span class="tag">Progression</span></div>
+        <div class="platform-foot"><small>Play to progress</small><a class="open-link" href="https://rollercoin.com/?r=kcq1472k" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+      <article class="platform" data-category="content" data-name="Publish0x blogging reading writing crypto tips">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#19333b">✍️</div><div><div class="platform-name">Publish0x</div><div class="platform-type">Read, write & publish</div></div><span class="status">CONTENT</span></div>
+        <p class="platform-desc">A publishing community where readers can tip creators and authors can earn from their work.</p><div class="tags"><span class="tag">Articles</span><span class="tag">Writing</span><span class="tag">Community</span></div>
+        <div class="platform-foot"><small>Creator economy</small><a class="open-link" href="https://www.publish0x.com/?a=OpnelZ1bKB" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+      <article class="platform" data-category="rewards" data-name="Fire Faucet points faucet crypto rewards">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#3a2022">🔥</div><div><div class="platform-name">Fire Faucet</div><div class="platform-type">Points & faucet rewards</div></div><span class="status">REWARDS</span></div>
+        <p class="platform-desc">A rewards faucet ecosystem with points, activities, account balances, and withdrawal rules.</p><div class="tags"><span class="tag">Faucet</span><span class="tag">Points</span><span class="tag">Tasks</span></div>
+        <div class="platform-foot"><small>Check terms & payout rules</small><a class="open-link" href="https://firefaucet.win/ref/126786" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+      <article class="platform" data-category="rewards" data-name="RewardJoy games apps surveys coins cashout">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#19382e">🎁</div><div><div class="platform-name">RewardJoy</div><div class="platform-type">Games, apps & surveys</div></div><span class="status">REWARDS</span></div>
+        <p class="platform-desc">Collect platform coins through game milestones, app trials, and opinion surveys.</p><div class="tags"><span class="tag">Games</span><span class="tag">Surveys</span><span class="tag">Cashout</span></div>
+        <div class="platform-foot"><small>Offer-based earning</small><a class="open-link" href="https://www.rewardjoy.com/?r=dashboard" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+      <article class="platform" data-category="web3" data-name="Sleepagotchi loyalty sleep points airdrop">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#202647">🌙</div><div><div class="platform-name">Sleepagotchi</div><div class="platform-type">Loyalty points & gaming</div></div><span class="status web3">WEB3</span></div>
+        <p class="platform-desc">A sleep-themed gamified ecosystem with loyalty points and wallet-linked reward history.</p><div class="tags"><span class="tag">Points</span><span class="tag">Loyalty</span><span class="tag">Wallet</span></div>
+        <div class="platform-foot"><small>Track eligibility carefully</small><a class="open-link" href="https://hub.sleepagotchi.com/loyalty?referral_code=MACJ66WA" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+      <article class="platform" data-category="web3" data-name="Canborsa onchain trading real world assets points">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#19343a">↗</div><div><div class="platform-name">Canborsa</div><div class="platform-type">Onchain markets & points</div></div><span class="status web3">DEFI</span></div>
+        <p class="platform-desc">A multi-market onchain trading platform with quests, points, and seasonal competitions.</p><div class="tags"><span class="tag">Markets</span><span class="tag">Quests</span><span class="tag">Points</span></div>
+        <div class="platform-foot"><small>Trading carries risk</small><a class="open-link" href="https://canborsa.com/r/UA23YWZP" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+      <article class="platform" data-category="web3" data-name="Startale app onchain ecosystem star points">
+        <div class="platform-top"><div class="platform-logo" style="--logo-bg:#2d2440">✳</div><div><div class="platform-name">Startale App</div><div class="platform-type">Onchain app ecosystem</div></div><span class="status web3">WEB3</span></div>
+        <p class="platform-desc">Explore onchain apps and ecosystem activities, including missions and STAR Points programs.</p><div class="tags"><span class="tag">Ecosystem</span><span class="tag">Missions</span><span class="tag">Points</span></div>
+        <div class="platform-foot"><small>Check current campaigns</small><a class="open-link" href="https://app.startale.com/sign-up?code=GMPKSJ11" target="_blank" rel="noopener noreferrer">Open platform <span>↗</span></a></div>
+      </article>
+    </div>
+    <div class="empty" id="emptyState">No platforms match your search. Try another keyword or category.</div>
+  </section>
+  <section class="lower-grid">
+    <div id="missions" class="panel">
+      <div class="panel-title"><h3>Mission control</h3><span id="taskSummary">0 of 5 complete</span></div>
+      <div class="task"><input type="checkbox" id="t1"><label for="t1">Review account setup & security<small>Use a unique password and enable 2FA where available.</small></label><span class="task-type">SETUP</span></div>
+      <div class="task"><input type="checkbox" id="t2"><label for="t2">Check platform rules and eligibility<small>Confirm region, identity requirements, and terms.</small></label><span class="task-type">SAFETY</span></div>
+      <div class="task"><input type="checkbox" id="t3"><label for="t3">Explore daily or weekly missions<small>Prioritize tasks you understand and can complete reliably.</small></label><span class="task-type">TASKS</span></div>
+      <div class="task"><input type="checkbox" id="t4"><label for="t4">Record points, balances, and activity<small>Keep a separate note of balances and pending rewards.</small></label><span class="task-type">TRACK</span></div>
+      <div class="task"><input type="checkbox" id="t5"><label for="t5">Review withdrawal thresholds and fees<small>Check payout options before spending time or money.</small></label><span class="task-type">PAYOUT</span></div>
+      <div class="progress-row"><span>Weekly checklist</span><strong id="progressLabel">0%</strong></div><div class="progress"><div id="progressBar"></div></div>
+      <p class="note">Checklist progress is saved locally in this browser. It does not sync with the platforms themselves.</p>
+    </div>
+    <div id="shortcuts" class="panel">
+      <div class="panel-title"><h3>Quick access</h3><span>Useful starting points</span></div>
+      <div class="quick-links">
+        <a class="quick-link" href="#platforms"><div class="qicon">◈</div><div>All platforms<small>Browse your full stack</small></div><b>↗</b></a>
+        <a class="quick-link" href="#missions"><div class="qicon">☑</div><div>Mission checklist<small>Keep your next step clear</small></div><b>↗</b></a>
+        <a class="quick-link" href="https://docs.optimai.network/docs/optimai-node/node-intro/" target="_blank" rel="noopener noreferrer"><div class="qicon">⌘</div><div>OptimAI node docs<small>Understand node participation</small></div><b>↗</b></a>
+        <a class="quick-link" href="https://www.publish0x.com/page/how-it-works" target="_blank" rel="noopener noreferrer"><div class="qicon">✍️</div><div>Publish0x guide<small>How reading and publishing works</small></div><b>↗</b></a>
+      </div>
+      <p class="note">External platforms can change features, reward rates, and eligibility. Verify details on their official sites.</p>
+    </div>
+  </section>
+  <footer class="footer"><span>ORBIT / PERSONAL REWARDS DASHBOARD</span><span>Independent community tracker · Not affiliated with listed platforms</span></footer>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const search = document.getElementById('search');
+  const cards = [...document.querySelectorAll('.platform')];
+  const filters = [...document.querySelectorAll('.filter')];
+  const empty = document.getElementById('emptyState');
+  let activeFilter = 'all';
+  function filterCards(){
+    const q = search.value.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(card => {
+      const matchesText = card.dataset.name.includes(q) || card.innerText.toLowerCase().includes(q);
+      const matchesFilter = activeFilter === 'all' || card.dataset.category === activeFilter;
+      const show = matchesText && matchesFilter;
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+    empty.style.display = visible ? 'none' : 'block';
+  }
+  search.addEventListener('input', filterCards);
+  filters.forEach(btn => btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.filter;
+    filters.forEach(b => b.classList.toggle('selected', b === btn));
+    filterCards();
+  }));
+  const checks = [...document.querySelectorAll('.task input[type=checkbox]')];
+  const key = 'orbit-mission-state-v1';
+  function updateTasks(){
+    let completed = 0;
+    checks.forEach((check, i) => {
+      const done = check.checked;
+      check.closest('.task').classList.toggle('done', done);
+      if(done) completed++;
+      try { localStorage.setItem(key, JSON.stringify(checks.map(c => c.checked))); } catch(e) {}
+    });
+    const pct = Math.round(completed / checks.length * 100);
+    document.getElementById('completedCount').innerHTML = `${completed} <span style="font-size:14px;color:var(--muted);font-weight:500">/ ${checks.length}</span>`;
+    document.getElementById('completionPct').textContent = pct + '%';
+    document.getElementById('taskSummary').textContent = `${completed} of ${checks.length} complete`;
+    document.getElementById('progressLabel').textContent = pct + '%';
+    document.getElementById('progressBar').style.width = pct + '%';
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(key) || 'null');
+    if(Array.isArray(saved)) checks.forEach((c,i) => c.checked = Boolean(saved[i]));
+  } catch(e) {}
+  checks.forEach(c => c.addEventListener('change', updateTasks));
+  updateTasks();
+  const toast = document.getElementById('toast');
+  document.getElementById('resetTasks').addEventListener('click', () => {
+    checks.forEach(c => c.checked = false);
+    updateTasks();
+    toast.textContent = 'Mission checklist reset';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  });
+})();
+</script>
+</body>
+</html>
